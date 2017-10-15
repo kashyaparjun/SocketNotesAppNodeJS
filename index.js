@@ -25,7 +25,11 @@ io.on('connection', (client) => {
     client.on('addNote', (data) => {
         if(data.id == 'e5js12534125wwer'){
             var len = makeid();
-            notes[len] = data.note;
+            var p = {
+                "note": data.note,
+                "title": data.title
+            };
+            notes[len] = p;
             io.emit('broadcast', notes);
             client.emit('response', true);
         }
