@@ -1,6 +1,7 @@
 var server = require('http').createServer();
 var io = require('socket.io')(server);
 notes = {};
+port = process.env.PORT || 3000;
 function makeid() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -51,4 +52,4 @@ io.on('connection', (client) => {
         console.log("Client Disconnected");
     });
 });
-server.listen(3000);
+server.listen(port);
