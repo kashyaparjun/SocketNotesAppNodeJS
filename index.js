@@ -20,7 +20,7 @@ io.on('connection', (client) => {
             client.emit('response', notes);
         }
         else{
-            client.emit('reponse', 'No Hacking Here!');
+            client.emit('msg', 'No Hacking Here!');
         }
     });
     client.on('addNote', (data) => {
@@ -32,20 +32,20 @@ io.on('connection', (client) => {
             };
             notes[len] = p;
             io.emit('broadcast', notes);
-            client.emit('response', true);
+            client.emit('msg', true);
         }
         else{
-            client.emit('response', 'No Hacking Here!');
+            client.emit('msg', 'No Hacking Here!');
         }
     });
     client.on('deleteNote', (data) => {
         if(data.id == 'e5js12534125wwer'){
             delete notes[data.del];
-            client.emit('response', true);
+            client.emit('msg', true);
             io.emit('broadcast', notes);
         }
         else{
-            client.emit('response', 'No Hacking Here!');
+            client.emit('msg', 'No Hacking Here!');
         }
     });
     client.on('disconnect', () => {
